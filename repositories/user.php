@@ -28,10 +28,9 @@ class User {
         }
 
 
-        echo $password;
-        // Encriptar la contraseña a SHA-256
+        // Encriptar la contraseña y la respuesta usando SHA-256
         $password = hash('sha256', $password);
-        echo $password;
+        $resp = hash('sha256', $resp);
 
         // Consulta SQL para obtener los datos del usuario
 
@@ -65,8 +64,9 @@ class User {
             die("Error en la conexión: " . $conn->connect_error);
         }
 
-        // Encriptar la contraseña a SHA-256
+        // Encriptar la contraseña y la respuesta usando SHA-256
         $password = hash('sha256', $password);
+        $resp = hash('sha256', $resp);
         // Consulta SQL para insertar los datos del usuario
         $sql = "INSERT INTO usuarios (usuario, nombre, clave, email, pregunta, respuesta) VALUES ('$username', '$nombre', '$password', '$email', '$pregunta', '$resp')";
         $result = $conn->query($sql);

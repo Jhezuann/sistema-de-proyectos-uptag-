@@ -34,7 +34,8 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `clave` varchar(64) COLLATE utf8mb3_spanish_ci NOT NULL,
   `pregunta` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
   `respuesta` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
-  `email` VARCHAR(255) COLLATE utf8mb3_spanish_ci NOT NULL UNIQUE
+  `email` VARCHAR(255) COLLATE utf8mb3_spanish_ci NOT NULL UNIQUE,
+  `tipo` VARCHAR(20) COLLATE utf8mb3_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
 
 --

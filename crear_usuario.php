@@ -4,22 +4,23 @@ session_start();
 if ($_POST) {
     $usuario = $_POST['usuario'];
     $clave = $_POST['clave'];
-    $confirmacion_clave = $_POST['confirmacion_clave'];
+    $re_password = $_POST['re_password'];
 
-    if (empty($usuario) || empty($clave) || empty($confirmacion_clave)) {
+    if (empty($usuario) || empty($clave) || empty($re_password)) {
         $mensaje = "Por favor, ingrese todos los campos.";
-    } else if ($clave != $confirmacion_clave) {
+    } elseif (strlen($clave) < 8) {
+        $mensaje = "La contraseña debe tener al menos 8 caracteres.";
+    } elseif ($clave != $re_password) {
         $mensaje = "La contraseña y la confirmación de contraseña no coinciden.";
     } else {
         // Encripta la contraseña usando SHA-256
         $clave_encriptada = hash('sha256', $clave);
+        $respuesta_encriptada = hash('sha256', $respuesta);
 
-        // Aquí se agregaría el nuevo usuario a la base de datos o archivo de texto
-        // Asegúrate de guardar $usuario y $clave_encriptada en la base de datos
-        $mensaje = "El usuario $usuario ha sido creado con éxito.";
     }
 }
 ?>
+
 
 <!doctype html>
 <html lang="en">
