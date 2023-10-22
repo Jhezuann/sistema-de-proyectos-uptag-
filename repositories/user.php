@@ -27,13 +27,16 @@ class User {
             die("La conexión ha fallado: " . $conn->connect_error);
         }
 
+
+        echo $password;
         // Encriptar la contraseña a SHA-256
         $password = hash('sha256', $password);
+        echo $password;
 
         // Consulta SQL para obtener los datos del usuario
+
         $sql = "SELECT * FROM usuarios WHERE usuario = '$username' AND clave = '$password'";
         $result = $conn->query($sql);
-
         // Verificar si se encontró un usuario con ese nombre y contraseña
         if ($result->num_rows == 1) {
             $token = new Token();
@@ -44,6 +47,7 @@ class User {
             // El usuario no es válido
             return false;
         }
+
 
         // Cerrar la conexión a la base de datos
         $CONN->desconnect();
@@ -63,23 +67,19 @@ class User {
 
         // Encriptar la contraseña a SHA-256
         $password = hash('sha256', $password);
-
         // Consulta SQL para insertar los datos del usuario
         $sql = "INSERT INTO usuarios (usuario, nombre, clave, email, pregunta, respuesta) VALUES ('$username', '$nombre', '$password', '$email', '$pregunta', '$resp')";
         $result = $conn->query($sql);
 
-        // Verificar si se ha insertado el usuario correctamente
         if ($result) {
-            // El usuario es válido
-            // Consulta SQL para obtener los datos del usuario
-            $sql = "SELECT * FROM usuarios WHERE usuario = '$username' AND clave = '$password'";
-            $result = $conn->query($sql);
-            $fila = $result->fetch_assoc();
-            $id = $fila["id_usuario"];
-
-            $token = new Token();
-            return $token->create($id);
+            $id = $conn->insert_id;
+            echo "El ID del insert es: " . $id;
+        } else {
+            echo "Error al ejecutar la consulta: " . $conn->error;
         }
+
+        $token = new Token();
+        return $token->create($id);
 
         // Cerrar la conexión a la base de datos
         $CONN->desconnect();

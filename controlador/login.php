@@ -5,11 +5,6 @@ session_start();
 
 $userd = new User();
 $result =  $userd -> authenticate($_POST["username"],$_POST["password"]);
-if ($result === false) {
-    echo "La autenticación ha fallado"; // Imprime un mensaje de error
-} else {
-    echo "La autenticación ha tenido éxito"; // Imprime un mensaje de éxito
-}
 
 
 
