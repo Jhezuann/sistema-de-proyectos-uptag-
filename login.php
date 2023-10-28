@@ -2,15 +2,16 @@
 session_start();
 require_once('repositories/token.php');
 
-if(isset($_SESSION['token'])) {
+if (isset($_SESSION['token'])) {
     $tokenC = new Token();
-    $result = $tokenC -> authenticate($_SESSION['token']);
-    if ($result == true){
-      header('location:index.php');
+    $result = $tokenC->authenticate($_SESSION['token']);
+    if ($result == true) {
+        header('location:index.php');
     }
-} 
-
+}
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -24,7 +25,15 @@ if(isset($_SESSION['token'])) {
     <title>Inicio de Sesion</title>
   </head>
   <body>
-<div class="container w-75 bg-secondary mt-5 mb-5 rounded shadow">
+    <div class="container w-75 bg-secondary mt-5 mb-5 rounded shadow">
+        <?php if (!empty($mensajeBloqueo)) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo $mensajeBloqueo; ?>
+            </div>
+        <?php else : ?>
+            <!-- El formulario de inicio de sesión -->
+            <!-- ... (tu código HTML) ... -->
+        <?php endif; ?>
     <div class="row align-items-stretch">
         <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
         </div>

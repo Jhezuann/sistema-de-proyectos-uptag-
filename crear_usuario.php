@@ -72,6 +72,7 @@ if ($_POST) {
               <label for="answer" class="form-label">Respuesta</label>
               <input type="text" class="form-control" name="answer">
             </div>
+
             <?php if (isset($mensaje)): ?>
               <div class="alert alert-danger" role="alert">
                 <?php echo $mensaje; ?>
