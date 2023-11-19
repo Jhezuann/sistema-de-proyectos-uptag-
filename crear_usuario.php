@@ -2,8 +2,8 @@
 session_start();
 
 if ($_POST) {
-    $usuario = $_POST['usuario'];
-    $clave = $_POST['clave'];
+    $usuario = $_POST['username'];
+    $clave = $_POST['password'];
     $re_password = $_POST['re_password'];
 
     if (empty($usuario) || empty($clave) || empty($re_password)) {
@@ -17,6 +17,8 @@ if ($_POST) {
         $clave_encriptada = hash('sha256', $clave);
         $respuesta_encriptada = hash('sha256', $respuesta);
 
+        // El resto del código para guardar la cuenta
+        // ...
     }
 }
 ?>
@@ -61,16 +63,16 @@ if ($_POST) {
               <input type="password" class="form-control" name="password">
             </div>
             <div class="mb-4">
-              <label for="re_password" class="form-label">Confirmar Contraseña</label>
-              <input type="password" class="form-control" name="re_password">
+              <label for="answer" class="form-label">Confirmar Contraseña</label>
+              <input type="password" class="form-control" name="answer">
             </div>
             <div class="mb-4">
               <label for="question" class="form-label">Pregunta de seguridad</label>
               <input type="text" class="form-control" name="question">
             </div>
             <div class="mb-4">
-              <label for="answer" class="form-label">Respuesta</label>
-              <input type="text" class="form-control" name="answer">
+              <label for="re_password" class="form-label">Respuesta</label>
+              <input type="text" class="form-control" name="re_password">
             </div>
 
             <?php if (isset($mensaje)): ?>

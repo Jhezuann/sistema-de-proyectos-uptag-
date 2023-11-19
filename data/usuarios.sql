@@ -20,16 +20,19 @@ SET time_zone = "+00:00";
 
 -- Estructura de tabla para la tabla `usuarios`
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id_usuario` int NOT NULL,
+  `id_usuario` int NOT NULL AUTO_INCREMENT,
   `usuario` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL UNIQUE,
   `nombre` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
   `clave` varchar(64) COLLATE utf8mb3_spanish_ci NOT NULL,
   `pregunta` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
   `respuesta` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
   `email` VARCHAR(255) COLLATE utf8mb3_spanish_ci NOT NULL UNIQUE,
-  `tipo` TINYINT NOT NULL,
+  `tipo` BOOLEAN NOT NULL DEFAULT false,
+  `estado` ENUM('activo', 'bloqueado') NOT NULL DEFAULT 'activo',
+  `intentos_fallidos` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+
 
 -- Crear variables para contraseña y respuesta cifradas
 SET @password = 'admin';
@@ -49,16 +52,3 @@ VALUES (
     'test@gmail.com',
     1
 );
-
--- Índices para tablas volcadas
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`);
-
--- AUTO_INCREMENT de las tablas volcadas
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -9,7 +9,9 @@ if (isset($_SESSION['token'])) {
         header('location:index.php');
     }
 }
+
 ?>
+
 
 
 
@@ -26,14 +28,6 @@ if (isset($_SESSION['token'])) {
   </head>
   <body>
     <div class="container w-75 bg-secondary mt-5 mb-5 rounded shadow">
-        <?php if (!empty($mensajeBloqueo)) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?php echo $mensajeBloqueo; ?>
-            </div>
-        <?php else : ?>
-            <!-- El formulario de inicio de sesión -->
-            <!-- ... (tu código HTML) ... -->
-        <?php endif; ?>
     <div class="row align-items-stretch">
         <div class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded">
         </div>
@@ -75,8 +69,3 @@ if (isset($_SESSION['token'])) {
     </div>
 </body>
 </html>
-
-
-
-
-

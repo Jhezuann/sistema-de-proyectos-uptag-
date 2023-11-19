@@ -11,8 +11,10 @@
       	</div> 
         <div class="col-12">
           <!-- <p class="d-flex mx-auto fw-normal">Opciones:</p> -->
-          <button id="opciones" type="button" class="btn btn-danger  px-3" data-bs-toggle="modal" data-bs-target="#elimpro" onClick='eliminar(<?php echo $p['id'] ?>)'>Eliminar</button>
-	        <button id="modaleditar" type="button" class="btn btn-info  px-3" data-bs-toggle="modal" data-bs-target="#e<?php echo $p['id'] ?>">Modificar</button>
+          <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 1): ?>
+            <button id="opciones" type="button" class="btn btn-danger  px-3" data-bs-toggle="modal" data-bs-target="#elimpro" onClick='eliminar(<?php echo $p['id'] ?>)'>Eliminar</button>
+  	        <button id="modaleditar" type="button" class="btn btn-info  px-3" data-bs-toggle="modal" data-bs-target="#e<?php echo $p['id'] ?>">Modificar</button>
+          <?php endif; ?> 
           <a href="descargar.php?descargar=<?php echo $p['pdf']?>" class="btn btn-success  px-3">Descargar</a>
         </div>   
       </div>

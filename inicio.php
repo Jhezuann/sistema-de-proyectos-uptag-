@@ -104,6 +104,9 @@ session_start();
   $resultado_cantidad_proyectos = $sentencia_cantidad_proyectos->fetchAll();
 
   //var_dump ($resultado_cantidad_proyectos);
+
+
+
  ?>
 
 <!doctype html>
@@ -126,6 +129,11 @@ session_start();
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
           </li>
+          <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 1): ?>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="usuarios.php">Usuarios</a>
+            </li>
+          <?php endif; ?>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Consultar
@@ -171,7 +179,6 @@ session_start();
                     <button name="filtro" onclick="$('#filtro').submit();"  class="btn btn-outline-primary mx-2">Consultar</button>    
                   </div>
                 </li>
-               
             </ul>
             </form>
           </li>
@@ -227,11 +234,13 @@ session_start();
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-          <div class="d-grid gap-2 pt-2 mb-3">
-                <button type="button" class="btn btn-dark p-3" data-bs-toggle="modal" data-bs-target="#modalAnadir">
-                <h3>Añadir un Proyecto</h3> 
-                </button>
-          </div> 
+          <?php if (isset($_SESSION['tipo']) && $_SESSION['tipo'] == 1): ?>
+            <div class="d-grid gap-2 pt-2 mb-3">
+              <button type="button" class="btn btn-dark p-3" data-bs-toggle="modal" data-bs-target="#modalAnadir">
+              <h3>Añadir un Proyecto</h3> 
+              </button>
+            </div>
+          <?php endif; ?> 
         </div>
       
         <!--lado derecho-->
