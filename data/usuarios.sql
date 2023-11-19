@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `nombre` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
   `clave` varchar(64) COLLATE utf8mb3_spanish_ci NOT NULL,
   `pregunta` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
-  `respuesta` varchar(33) COLLATE utf8mb3_spanish_ci NOT NULL,
+  `respuesta` varchar(64) COLLATE utf8mb3_spanish_ci NOT NULL,
   `email` VARCHAR(255) COLLATE utf8mb3_spanish_ci NOT NULL UNIQUE,
   `tipo` BOOLEAN NOT NULL DEFAULT false,
   `estado` ENUM('activo', 'bloqueado') NOT NULL DEFAULT 'activo',
