@@ -29,14 +29,14 @@ $id = $_SESSION['id'];
             <!--login -->
              <form action="update_clave.php" method="POST">
                 <div class="mb-4">
-                  <label for="usuario" class="form-label">Nueva contraseña</label>
-                  <input type="password" class="form-control" name="clave" aria-describedby="emailHelp">
+                  <label for="password" class="form-label">Nueva contraseña</label>
+                  <input type="password" class="form-control" name="password" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-4">
-                  <label for="clave" class="form-label">Repita contraseña</label>
-                  <input type="password" class="form-control" name="clave1">
+                  <label for="password_confirmar" class="form-label">Repita contraseña</label>
+                  <input type="password" class="form-control" name="password_confirmar">
                 </div>
-                                    <input type="hidden" name="id_usuario" class="form-control" value="<?php echo $id;   ?>" >
+                      <input type="hidden" name="id_usuario" class="form-control" value="<?php echo $id;   ?>" >
                 <div class="d-grid">
                   <button type="submit" class="btn btn-dark"><h5>Actualizar</h5></button>
                 </div>
