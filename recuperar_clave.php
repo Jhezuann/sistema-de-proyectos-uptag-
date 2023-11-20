@@ -24,8 +24,6 @@ $sql= "SELECT * FROM usuarios WHERE usuario = '$user'";
 		$_SESSION["pregunta"] =$row['pregunta'];
 		$_SESSION["respuesta"] =$row['respuesta'];
 
-		
-		
 
 		header("Location: pregunta.php");
 	}
