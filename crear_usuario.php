@@ -48,8 +48,8 @@
               <input type="text" class="form-control" name="question">
             </div>
             <div class="mb-4">
-              <label for="re_password" class="form-label">Respuesta</label>
-              <input type="text" class="form-control" name="re_password">
+              <label for="answer" class="form-label">Respuesta</label>
+              <input type="text" class="form-control" name="answer">
             </div>
 
             <?php if (isset($mensaje)): ?>

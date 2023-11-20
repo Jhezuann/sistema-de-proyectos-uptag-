@@ -5,11 +5,11 @@ session_start();
 include('conexion/conect.php');
 
 $user = $_SESSION['user'];
-$respuesta = hash('sha256', $_POST['respuesta']);
+$resultadopuesta = hash('sha256', $_POST['respuesta']);
 
 
 
-$sql= "SELECT * FROM usuarios WHERE usuario = '$user' and respuesta ='$respuesta'";
+$sql= "SELECT * FROM usuarios WHERE usuario = '$user' and respuesta ='$resultadopuesta'";
 
 	$resultado = mysqli_query($conexion,$sql);
 	if (mysqli_num_rows($resultado) == 0)

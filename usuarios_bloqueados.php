@@ -69,7 +69,7 @@ $usuarios_bloqueados = $sentencia_usuarios_bloqueados->fetchAll();
 </nav>
 <body>
   <div class="container">
-    <h1>Permisos bloqueados</h1>
+    <h1>Usuarios bloqueados</h1>
         <table class="table">
           <thead>
             <tr>

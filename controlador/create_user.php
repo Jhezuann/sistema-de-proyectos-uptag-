@@ -10,12 +10,9 @@ $nombre = $_POST["name"];
 $clave = $_POST["password"];
 $clave2 = $_POST["password_confirmmar"];
 
-if (clave != clave2) {
-    echo "<script text='text/javascript'>
-    alert('Clave y clave de confirmacion invalido');
-    window.location = '../index.php';
-    </script>";
-    header('location:../index.php');
+if ($clave !== $clave2) {
+	echo "<script> alert('Contraseñas no coinciden'); window.location.href = '../crear_usuario.php';</script>";
+	exit;
 }
 
 $email = $_POST["email"];
