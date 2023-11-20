@@ -8,6 +8,16 @@ $userd = new User();
 $usuario = $_POST["username"];
 $nombre = $_POST["name"]; 
 $clave = $_POST["password"];
+$clave2 = $_POST["password_confirmmar"];
+
+if (clave != clave2) {
+    echo "<script text='text/javascript'>
+    alert('Clave y clave de confirmacion invalido');
+    window.location = '../index.php';
+    </script>";
+    header('location:../index.php');
+}
+
 $email = $_POST["email"];
 $question = $_POST["question"];
 $response  = $_POST["answer"];

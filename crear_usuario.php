@@ -1,27 +1,4 @@
-<?php
-session_start();
-
-if ($_POST) {
-    $usuario = $_POST['username'];
-    $clave = $_POST['password'];
-    $re_password = $_POST['re_password'];
-
-    if (empty($usuario) || empty($clave) || empty($re_password)) {
-        $mensaje = "Por favor, ingrese todos los campos.";
-    } elseif (strlen($clave) < 8) {
-        $mensaje = "La contraseña debe tener al menos 8 caracteres.";
-    } elseif ($clave != $re_password) {
-        $mensaje = "La contraseña y la confirmación de contraseña no coinciden.";
-    } else {
-        // Encripta la contraseña usando SHA-256
-        $clave_encriptada = hash('sha256', $clave);
-        $respuesta_encriptada = hash('sha256', $respuesta);
-
-        // El resto del código para guardar la cuenta
-        // ...
-    }
-}
-?>
+<?php session_start();?>
 
 
 <!doctype html>
@@ -63,8 +40,8 @@ if ($_POST) {
               <input type="password" class="form-control" name="password">
             </div>
             <div class="mb-4">
-              <label for="answer" class="form-label">Confirmar Contraseña</label>
-              <input type="password" class="form-control" name="answer">
+              <label for="password_confirmmar" class="form-label">Confirmar Contraseña</label>
+              <input type="password" class="form-control" name="password_confirmmar">
             </div>
             <div class="mb-4">
               <label for="question" class="form-label">Pregunta de seguridad</label>

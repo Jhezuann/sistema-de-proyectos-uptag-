@@ -106,7 +106,7 @@ class User {
         $conn->query($sql);
     }
 
-    public function create($username, $nombre, $pregunta, $re_password, $password, $email) {
+    public function create($username, $nombre, $pregunta, $respuesta_doubt, $password, $email) {
         require_once('token.php');
 
         // Verificar la longitud de la contraseña
@@ -125,9 +125,9 @@ class User {
 
         // Encriptar la contraseña y la respuesta usando SHA-256
         $password = hash('sha256', $password);
-        $re_password = hash('sha256', $re_password);
+        $respuesta_doubt = hash('sha256', $respuesta_doubt);
         // Consulta SQL para insertar los datos del usuario
-        $sql = "INSERT INTO usuarios (usuario, nombre, clave, email, pregunta, respuesta) VALUES ('$username', '$nombre', '$password', '$email', '$pregunta', '$re_password')";
+        $sql = "INSERT INTO usuarios (usuario, nombre, clave, email, pregunta, respuesta) VALUES ('$username', '$nombre', '$password', '$email', '$pregunta', '$respuesta_doubt')";
         $result = $conn->query($sql);
 
         if ($result) {

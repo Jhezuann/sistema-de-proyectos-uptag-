@@ -5,7 +5,8 @@ session_start();
 include('conexion/conect.php');
 
 $user = $_SESSION['user'];
-$respuesta = $_POST['respuesta'];
+$respuesta = hash('sha256', $_POST['respuesta']);
+
 
 
 $sql= "SELECT * FROM usuarios WHERE usuario = '$user' and respuesta ='$respuesta'";

@@ -3,10 +3,12 @@
 include('conexion/conect.php');
 
 $id_usuario = $_POST['id_usuario'];
+$clave = hash('sha256', $_POST['password']);
+$clave2 = hash('sha256', $_POST['password']);
 
-$clave = $_POST['clave'];
-
-
+if ($clave != $clave2) {
+	echo "<script> alert('password no coinciden'); window.location.href = 'index.php';</script>";
+}
 
 $sql = "UPDATE usuarios SET clave='$clave' WHERE id_usuario='$id_usuario'";
 
@@ -17,9 +19,6 @@ $sql = "UPDATE usuarios SET clave='$clave' WHERE id_usuario='$id_usuario'";
               window.location.href = 'index.php';
 
 	    </script>";
-	  
-
-	
 
 	} else {
 	    echo "Error: No se pudo guardar el registro ";
